@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "id": "whodoneit",
+  "version": "1.0",
+
+  "name": "Who Done It",
+  "description": "Tracks who broke what block, when they did so, and how they did so.",
+  "authors": [
+    "GiantLuigi4"
+  ],
+  "contact": {
+    "homepage": "N/A",
+    "sources": "TODO"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+  
+  "custom": {
+    "cardinal-components": [
+      "whodoneit:blocklog"
+    ]
+  },
+  
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "tfc.whodoneit.WhoDoneIt"
+    ],
+    "client": [
+      "tfc.whodoneit.client.WhoDoneItClient"
+    ],
+    "cardinal-components-chunk": [
+      "tfc.whodoneit.blocklog.component.ChunkComponentInitializer"
+    ]
+  },
+  "mixins": [
+    "whodoneit.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x",
+    "cardinal-components-chunk": "*"
+  },
+  "suggests": {
+  }
+}
