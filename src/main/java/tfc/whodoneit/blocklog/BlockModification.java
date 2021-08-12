@@ -65,5 +65,9 @@ public class BlockModification {
 				;
 	}
 	
+	public static int compare(BlockModification blockModification, BlockModification blockModification1) {
+		return Long.compare(blockModification.setTime, blockModification1.setTime);
+	}
+	
 	// [username of culprit] changed the block at [pos] from [oldState] to [newState] via [method]
 }

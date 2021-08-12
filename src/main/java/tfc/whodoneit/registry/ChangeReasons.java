@@ -9,6 +9,7 @@ import java.util.function.Consumer;
 public class ChangeReasons {
 	private static final ArrayList<Pair<Identifier, Identifier>> REASONS = new ArrayList<>();
 	
+	public static final Identifier TNT_REDSTONE = register(new Identifier("whodoneit:tnt_redstone"), PreventionCategories.PLAYER);
 	public static final Identifier LIT_CREEPER = register(new Identifier("whodoneit:creeper_lit"), PreventionCategories.PLAYER);
 	public static final Identifier EXPLOSION = register(new Identifier("whodoneit:explosion"), PreventionCategories.PLAYER);
 	public static final Identifier PLACEMENT = register(new Identifier("whodoneit:placement"), PreventionCategories.PLAYER);

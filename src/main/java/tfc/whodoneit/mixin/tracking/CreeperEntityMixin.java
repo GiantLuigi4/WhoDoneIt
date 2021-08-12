@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import tfc.whodoneit.registry.ChangeReasons;
 import tfc.whodoneit.util.interfaces.ICauseAware;
 
 import java.util.UUID;
@@ -41,6 +42,6 @@ public class CreeperEntityMixin implements ICauseAware {
 	@Inject(method = "interactMob", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/mob/CreeperEntity;ignite()V"))
 	public void preIgnite(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
 		cause = player.getUuid();
-		message = new Identifier("whodoneit:creeper_lit");
+		message = ChangeReasons.LIT_CREEPER;
 	}
 }

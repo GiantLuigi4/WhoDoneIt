@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import tfc.whodoneit.registry.ChangeReasons;
 import tfc.whodoneit.util.interfaces.ICauseAware;
 
 import java.util.UUID;
@@ -27,31 +28,31 @@ public class TntEntityMixin implements ICauseAware {
 	public void postInit(World world, double x, double y, double z, @Nullable LivingEntity igniter, CallbackInfo ci) {
 		if (igniter instanceof PlayerEntity) {
 			cause = igniter.getUuid();
-			message = new Identifier("whodoneit:tnt");
+			message = ChangeReasons.TNT;
 		} else {
 			if (igniter instanceof CreeperEntity) {
 				CreeperEntity entity = (CreeperEntity) igniter;
 				if (entity.getTarget() instanceof PlayerEntity) {
 					cause = ((CreeperEntity) igniter).getTarget().getUuid();
-					message = new Identifier("whodoneit:creeper_tnt");
+					message = ChangeReasons.CREEPER_TNT;
 				}
 			} else if (igniter instanceof WitherEntity) {
 				WitherEntity entity = (WitherEntity) igniter;
 				if (entity.getTarget() instanceof PlayerEntity) {
 					cause = ((WitherEntity) igniter).getTarget().getUuid();
-					message = new Identifier("whodoneit:wither_tnt");
+					message = ChangeReasons.WITHER_TNT;
 				}
 			} else if (igniter instanceof GhastEntity) {
 				GhastEntity entity = (GhastEntity) igniter;
 				if (entity.getTarget() instanceof PlayerEntity) {
 					cause = ((GhastEntity) igniter).getTarget().getUuid();
-					message = new Identifier("whodoneit:ghast_tnt");
+					message = ChangeReasons.GHAST_TNT;
 				}
 			} else if (igniter instanceof SkeletonEntity) {
 				SkeletonEntity entity = (SkeletonEntity) igniter;
 				if (entity.getTarget() instanceof PlayerEntity) {
 					cause = ((SkeletonEntity) igniter).getTarget().getUuid();
-					message = new Identifier("whodoneit:ghast_tnt");
+					message = ChangeReasons.SKELETON_TNT;
 				}
 			}
 		}

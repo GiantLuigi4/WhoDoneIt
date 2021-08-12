@@ -26,13 +26,14 @@ public class ChunkComponent implements ComponentV3 {
 		for (String key : compoundTag.getKeys()) {
 			BlockPos pos = BlockPos.fromLong(Long.parseLong(key));
 			NbtList tag = compoundTag.getList(key, NbtType.LIST);
+			ArrayList<BlockModification> modifications;
+			if (!map.containsKey(pos)) map.put(pos, new ArrayList<>());
+			modifications = map.get(pos);
 			for (NbtElement tag1 : tag) {
 				NbtCompound compoundTag1 = (NbtCompound) tag1;
-				ArrayList<BlockModification> modifications;
-				if (!map.containsKey(pos)) map.put(pos, new ArrayList<>());
-				modifications = map.get(pos);
 				modifications.add(BlockModification.deserialize(compoundTag1));
 			}
+			modifications.sort(BlockModification::compare);
 		}
 	}
 	
@@ -63,5 +64,11 @@ public class ChunkComponent implements ComponentV3 {
 		);
 		modifications.add(modification);
 		return modification;
+	}
+	
+	public BlockModification getLatest(BlockPos pos) {
+		ArrayList<BlockModification> modifications = map.getOrDefault(pos, null);
+		if (modifications == null) return null;
+		return modifications.get(modifications.size() - 1);
 	}
 }
