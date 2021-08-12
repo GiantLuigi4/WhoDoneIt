@@ -1,4 +1,4 @@
-package tfc.whodoneit.mixin;
+package tfc.whodoneit.mixin.blocklog;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import tfc.whodoneit.blocklog.component.ChunkComponentInitializer;
+import tfc.whodoneit.registry.ChangeReasons;
 
 @Mixin(ServerPlayerInteractionManager.class)
 public class ServerPlayerInteractionManagerMixin {
@@ -28,7 +29,7 @@ public class ServerPlayerInteractionManagerMixin {
 						world.getBlockState(pos).getBlock().getTranslationKey(),
 						Blocks.AIR.getDefaultState().getBlock().getTranslationKey(),
 						Util.getEpochTimeMs(),
-						"whodoneit.blocklog.mining"
+						ChangeReasons.MINING.toString()
 				);
 	}
 }

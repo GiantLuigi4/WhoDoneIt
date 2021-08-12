@@ -48,7 +48,7 @@ public class BlockModification {
 		// TODO: translation text component stuff
 		return NameGetter.getNameFor(culprit) // TODO: get culprit name
 		+ " changed the block at [pos]" // TODO: get the pos
-		+ " from " + oldState + " to " + newState + " via " + method;
+		+ " from " + oldState + " to " + newState + " via " + method.replace(":", ".blocklog.");
 	}
 	
 	public MutableText getMessage(BlockPos pos) {
@@ -61,7 +61,7 @@ public class BlockModification {
 						.append(new LiteralText(" to "))
 						.append(new TranslatableText(newState))
 						.append(new LiteralText(" via "))
-						.append(new TranslatableText(method))
+						.append(new TranslatableText(method.replace(":", ".blocklog.")))
 				;
 	}
 	

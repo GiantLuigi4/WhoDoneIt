@@ -1,0 +1,21 @@
+{
+  "whodoneit.blocklog.creeper_lit": "a lit creeper",
+  "whodoneit.blocklog.explosion": "an explosion",
+  "whodoneit.blocklog.placement": "placement",
+  "whodoneit.blocklog.mining": "mining",
+  "whodoneit.blocklog.tnt": "tnt",
+  "whodoneit.blocklog.bed": "a bed",
+  "whodoneit.blocklog.chain_skeleton_tnt": "tnt chained off tnt lit by a skeleton",
+  "whodoneit.blocklog.chain_creeper_tnt": "tnt chained off tnt lit by a creeper",
+  "whodoneit.blocklog.chain_wither_tnt": "tnt chained off tnt lit by a wither",
+  "whodoneit.blocklog.chain_ghast_tnt": "tnt chained off tnt lit by a ghast",
+  "whodoneit.blocklog.skeleton_tnt": "tnt lit by a skeleton",
+  "whodoneit.blocklog.creeper_tnt": "tnt lit by a creeper",
+  "whodoneit.blocklog.wither_tnt": "tnt lit by a wither",
+  "whodoneit.blocklog.ghast_tnt": "tnt lit by a ghast",
+  "whodoneit.blocklog.redstone": "redstone",
+  "whodoneit.blocklog.creeper": "a creeper",
+  "whodoneit.blocklog.ghast": "a ghast",
+  "whodoneit.blocklog.wither": "a wither",
+  "whodoneit.blocklog.dragon": "a dragon"
+}

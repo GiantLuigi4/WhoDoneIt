@@ -12,6 +12,7 @@ import tfc.whodoneit.blocklog.BlockModification;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class ChunkComponent implements ComponentV3 {
 	private final HashMap<BlockPos, ArrayList<BlockModification>> map = new HashMap<>();
@@ -41,17 +42,22 @@ public class ChunkComponent implements ComponentV3 {
 			NbtList list = new NbtList();
 			for (BlockModification blockModification : blockPosArrayListPair.getValue()) {
 				list.add(blockModification.serialize());
+				System.out.println(blockModification.toString());
 			}
 			compoundTag.put(blockPosArrayListPair.getKey().asLong() + "", list);
 		}
 	}
 	
 	public BlockModification addModification(PlayerEntity player, BlockPos pos, String blockState, String state, long epochTimeMs, String method) {
+		return addModification(player.getGameProfile().getId(), pos, blockState, state, epochTimeMs, method);
+	}
+	
+	public BlockModification addModification(UUID uuid, BlockPos pos, String blockState, String state, long epochTimeMs, String method) {
 		ArrayList<BlockModification> modifications;
 		if (!map.containsKey(pos)) map.put(pos, new ArrayList<>());
 		modifications = map.get(pos);
 		BlockModification modification = new BlockModification(
-				player.getGameProfile().getId(), blockState,
+				uuid, blockState,
 				state, method,
 				epochTimeMs
 		);

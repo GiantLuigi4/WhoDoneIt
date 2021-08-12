@@ -1,4 +1,4 @@
-package tfc.whodoneit.mixin;
+package tfc.whodoneit.mixin.blocklog;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItem;
@@ -9,6 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import tfc.whodoneit.blocklog.component.ChunkComponentInitializer;
+import tfc.whodoneit.registry.ChangeReasons;
 
 @Mixin(BlockItem.class)
 public class BlockItemMixin {
@@ -21,7 +22,7 @@ public class BlockItemMixin {
 				context.getBlockPos(),
 				context.getWorld().getBlockState(context.getBlockPos()).getBlock().getTranslationKey(),
 				state.getBlock().getTranslationKey(), Util.getEpochTimeMs(),
-				"whodoneit.blocklog.placement"
+				ChangeReasons.PLACEMENT.toString()
 		)
 //						.getMessage(context.getBlockPos()), false)
 		;

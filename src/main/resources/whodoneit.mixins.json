@@ -4,9 +4,18 @@
   "package": "tfc.whodoneit.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "BlockItemMixin",
-    "ServerPlayerInteractionManagerMixin",
-    "ExplosionMixin"
+    "ExplosionAccessor",
+    "TntBlockMixin",
+    
+    "antigrief.ExplosionMixin",
+    
+    "blocklog.BlockItemMixin",
+    "blocklog.ExplosionMixin",
+    "blocklog.ServerPlayerInteractionManagerMixin",
+    
+    "tracking.CreeperEntityMixin",
+    "tracking.TntEntityMixin",
+    "tracking.ExplosionMixin"
   ],
   "client": [
   ],
