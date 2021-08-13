@@ -13,8 +13,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
+import tfc.whodoneit.components.WhoDoneItChunkComponents;
 import tfc.whodoneit.util.interfaces.ICauseAware;
-import tfc.whodoneit.blocklog.component.ChunkComponentInitializer;
 
 @Mixin(value = Explosion.class, priority = -10000)
 public class ExplosionMixin {
@@ -31,7 +31,7 @@ public class ExplosionMixin {
 			if (causeAware.getMessage() == null) {
 				System.out.println("[Explosion Logging] WARN: cause is not null while reason is! This is not intended!");
 			} else {
-				ChunkComponentInitializer.BLOCKLOG.get(world.getChunk(pos)).addModification(
+				WhoDoneItChunkComponents.BLOCKLOG.get(world.getChunk(pos)).addModification(
 						causeAware.getCause(),
 						pos,
 						world.getBlockState(pos).getBlock().getTranslationKey(),

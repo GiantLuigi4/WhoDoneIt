@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import tfc.whodoneit.blocklog.component.ChunkComponentInitializer;
+import tfc.whodoneit.components.WhoDoneItChunkComponents;
 import tfc.whodoneit.registry.ChangeReasons;
 
 @Mixin(ServerPlayerInteractionManager.class)
@@ -22,7 +22,7 @@ public class ServerPlayerInteractionManagerMixin {
 	
 	@Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;onBroken(Lnet/minecraft/world/WorldAccess;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V"), method = "tryBreakBlock")
 	public void preBreak(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-		ChunkComponentInitializer.BLOCKLOG.get(world.getChunk(pos))
+		WhoDoneItChunkComponents.BLOCKLOG.get(world.getChunk(pos))
 				.addModification(
 						player,
 						pos,

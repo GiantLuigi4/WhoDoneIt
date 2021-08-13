@@ -14,11 +14,12 @@
   },
 
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/whodoneit/icon.png",
   
   "custom": {
     "cardinal-components": [
-      "whodoneit:blocklog"
+      "whodoneit:blocklog",
+      "whodoneit:protection_regions"
     ]
   },
   
@@ -31,7 +32,10 @@
       "tfc.whodoneit.client.WhoDoneItClient"
     ],
     "cardinal-components-chunk": [
-      "tfc.whodoneit.blocklog.component.ChunkComponentInitializer"
+      "tfc.whodoneit.components.WhoDoneItChunkComponents"
+    ],
+    "cardinal-components-world": [
+      "tfc.whodoneit.components.WhoDoneItWorldComponents"
     ]
   },
   "mixins": [
@@ -42,7 +46,8 @@
     "fabricloader": ">=0.7.4",
     "fabric": "*",
     "minecraft": "1.16.x",
-    "cardinal-components-chunk": "*"
+    "cardinal-components-chunk": "*",
+    "cardinal-components-world": "*"
   },
   "suggests": {
   }

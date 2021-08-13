@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import tfc.whodoneit.blocklog.component.ChunkComponentInitializer;
+import tfc.whodoneit.components.WhoDoneItChunkComponents;
 import tfc.whodoneit.registry.ChangeReasons;
 
 @Mixin(BlockItem.class)
@@ -17,7 +17,7 @@ public class BlockItemMixin {
 	public void WhoDoneIt_prePlacement(ItemPlacementContext context, BlockState state, CallbackInfoReturnable<Boolean> cir) {
 		if (context.getWorld().isClient) return;
 //		context.getPlayer().sendMessage(
-		ChunkComponentInitializer.BLOCKLOG.get(context.getWorld().getChunk(context.getBlockPos())).addModification(
+		WhoDoneItChunkComponents.BLOCKLOG.get(context.getWorld().getChunk(context.getBlockPos())).addModification(
 				context.getPlayer(),
 				context.getBlockPos(),
 				context.getWorld().getBlockState(context.getBlockPos()).getBlock().getTranslationKey(),

@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class ChunkComponent implements ComponentV3 {
+public class ModificationTrackerComponent implements ComponentV3 {
 	private final HashMap<BlockPos, ArrayList<BlockModification>> map = new HashMap<>();
 	
 	public HashMap<BlockPos, ArrayList<BlockModification>> getModifications() {

@@ -6,7 +6,6 @@ import net.minecraft.entity.TntEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
@@ -14,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import tfc.whodoneit.blocklog.BlockModification;
-import tfc.whodoneit.blocklog.component.ChunkComponentInitializer;
+import tfc.whodoneit.components.WhoDoneItChunkComponents;
 import tfc.whodoneit.blocklog.mixin.TntMixin;
 import tfc.whodoneit.registry.ChangeReasons;
 import tfc.whodoneit.util.interfaces.ICauseAware;
@@ -44,7 +43,7 @@ public class TntBlockMixin {
 		if (!world.isClient) {
 			TntEntity tntEntity = new TntEntity(world, (double)pos.getX() + 0.5D, (double)pos.getY(), (double)pos.getZ() + 0.5D, igniter);
 			if (igniter == null) {
-				BlockModification modification = ChunkComponentInitializer.BLOCKLOG.get(world.getChunk(pos)).getLatest(pos);
+				BlockModification modification = WhoDoneItChunkComponents.BLOCKLOG.get(world.getChunk(pos)).getLatest(pos);
 				if (modification != null) {
 					ICauseAware causeAware = (ICauseAware)tntEntity;
 					causeAware.setCause(modification.culprit);
