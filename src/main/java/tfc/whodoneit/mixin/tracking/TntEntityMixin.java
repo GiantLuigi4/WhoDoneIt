@@ -25,7 +25,7 @@ public class TntEntityMixin implements ICauseAware {
 	Identifier message;
 	
 	@Inject(at = @At("TAIL"), method = "<init>(Lnet/minecraft/world/World;DDDLnet/minecraft/entity/LivingEntity;)V")
-	public void postInit(World world, double x, double y, double z, @Nullable LivingEntity igniter, CallbackInfo ci) {
+	public void WhoDoneIt_postInit(World world, double x, double y, double z, @Nullable LivingEntity igniter, CallbackInfo ci) {
 		if (igniter instanceof PlayerEntity) {
 			cause = igniter.getUuid();
 			message = ChangeReasons.TNT;

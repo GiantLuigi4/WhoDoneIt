@@ -14,14 +14,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import tfc.whodoneit.components.WhoDoneItChunkComponents;
 import tfc.whodoneit.registry.ChangeReasons;
 
-@Mixin(ServerPlayerInteractionManager.class)
+@Mixin(value = ServerPlayerInteractionManager.class, priority = -10000)
 public class ServerPlayerInteractionManagerMixin {
 	@Shadow public ServerWorld world;
 	
 	@Shadow public ServerPlayerEntity player;
 	
 	@Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/block/Block;onBroken(Lnet/minecraft/world/WorldAccess;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)V"), method = "tryBreakBlock")
-	public void preBreak(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
+	public void WhoDoneIt_preBreak(BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
 		WhoDoneItChunkComponents.BLOCKLOG.get(world.getChunk(pos))
 				.addModification(
 						player,

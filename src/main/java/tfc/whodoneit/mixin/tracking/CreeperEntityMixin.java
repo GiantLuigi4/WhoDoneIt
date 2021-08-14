@@ -40,7 +40,7 @@ public class CreeperEntityMixin implements ICauseAware {
 	}
 	
 	@Inject(method = "interactMob", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/mob/CreeperEntity;ignite()V"))
-	public void preIgnite(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
+	public void WhoDoneIt_preIgnite(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
 		cause = player.getUuid();
 		message = ChangeReasons.LIT_CREEPER;
 	}

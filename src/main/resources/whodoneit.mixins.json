@@ -6,9 +6,11 @@
   "mixins": [
     "ExplosionAccessor",
     "TntBlockMixin",
-    
+  
+    "antigrief.BlockItemMixin",
     "antigrief.ExplosionMixin",
-    
+    "antigrief.ServerPlayerInteractionManagerMixin",
+  
     "blocklog.BlockItemMixin",
     "blocklog.ExplosionMixin",
     "blocklog.ServerPlayerInteractionManagerMixin",

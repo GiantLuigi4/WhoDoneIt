@@ -43,7 +43,6 @@ public class ModificationTrackerComponent implements ComponentV3 {
 			NbtList list = new NbtList();
 			for (BlockModification blockModification : blockPosArrayListPair.getValue()) {
 				list.add(blockModification.serialize());
-				System.out.println(blockModification.toString());
 			}
 			compoundTag.put(blockPosArrayListPair.getKey().asLong() + "", list);
 		}
@@ -69,6 +68,8 @@ public class ModificationTrackerComponent implements ComponentV3 {
 	public BlockModification getLatest(BlockPos pos) {
 		ArrayList<BlockModification> modifications = map.getOrDefault(pos, null);
 		if (modifications == null) return null;
+		if (modifications.isEmpty()) return null;
+		modifications.sort(BlockModification::compare);
 		return modifications.get(modifications.size() - 1);
 	}
 }

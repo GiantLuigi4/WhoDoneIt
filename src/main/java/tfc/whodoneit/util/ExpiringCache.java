@@ -19,7 +19,9 @@ public class ExpiringCache<T, V> {
 	public V get(T key) {
 		Pair<Long, V> val = map.getOrDefault(key, null);
 		if (val != null) {
-			if (Util.getEpochTimeMs() - expiryTime > val.getLeft()) {
+			if (Util.getEpochTimeMs() - val.getLeft() > expiryTime) {
+				System.out.println(Util.getEpochTimeMs() - val.getLeft());
+				System.out.println(expiryTime);
 				map.remove(key);
 				val = null;
 			}
@@ -29,5 +31,20 @@ public class ExpiringCache<T, V> {
 			map.put(key, val);
 		}
 		return val.getRight();
+	}
+	
+	public void set(T key, V value) {
+		Pair<Long, V> val = map.getOrDefault(key, null);
+		if (val != null) {
+//			if (Util.getEpochTimeMs() - expiryTime > val.getLeft()) {
+			if (Util.getEpochTimeMs() - val.getLeft() > expiryTime) {
+				map.remove(key);
+				val = null;
+			}
+		}
+		if (val == null) {
+			val = new Pair<>(Util.getEpochTimeMs(), value);
+			map.put(key, val);
+		}
 	}
 }

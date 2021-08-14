@@ -2,6 +2,7 @@ package tfc.whodoneit.claim;
 
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
 
 public class ClaimBox {
 	public final String boxName;
@@ -41,5 +42,16 @@ public class ClaimBox {
 				endPos.getX() >= pos.getX() &&
 				endPos.getY() >= pos.getY() &&
 				endPos.getZ() >= pos.getZ();
+	}
+	
+	public boolean intersects(ClaimBox box) {
+		return
+				this.startPos.getX() < box.endPos.getX() &&
+						this.endPos.getX() > box.startPos.getX() &&
+						this.startPos.getY() < box.endPos.getY() &&
+						this.endPos.getY() > box.startPos.getY() &&
+						this.startPos.getZ() < box.endPos.getZ() &&
+						this.endPos.getZ() > box.startPos.getZ()
+				;
 	}
 }

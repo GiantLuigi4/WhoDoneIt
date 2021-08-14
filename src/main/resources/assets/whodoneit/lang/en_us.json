@@ -18,5 +18,17 @@
   "whodoneit.blocklog.creeper": "a creeper",
   "whodoneit.blocklog.ghast": "a ghast",
   "whodoneit.blocklog.wither": "a wither",
-  "whodoneit.blocklog.dragon": "a dragon"
+  "whodoneit.blocklog.dragon": "a dragon",
+  
+  "whodoneit.claim.create.success": "Successfully created the claim \"%1$s\".",
+  "whodoneit.claim.create.fail.claim_exists": "A claim with the name \"%1$s\" already exists.",
+  "whodoneit.claim.delete.fail.no_exist": "No claim exists with the name \"%1$s\".",
+  "whodoneit.claim.delete.success": "Successfully deleted the claim \"%1$s\".",
+  "whodoneit.claim.modify.region.add.success": "Successfully added the region \"%2$s\" to the claim \"%1$s\".",
+  "whodoneit.claim.modify.region.add.fail.no_exist": "No claim exists with the name \"%1$s\".",
+  "whodoneit.claim.modify.region.add.fail.intersects": "Box \"%1$s\" intersects with a claim owned by \"%2$s\".",
+  "> whodoneit.claim.modify.region.add.fail.box_exists": "The box \"%2$1\" already exists in the claim \"%1$s\".",
+  "whodoneit.claim.modify.region.delete.fail.box_no_exist": "Box \"%2$s\" does not exist in the claim \"%1$s\".",
+  "whodoneit.claim.modify.region.delete.fail.no_exist": "No claim exists with the name \"%1$s\".",
+  "whodoneit.claim.modify.region.delete.success": "Successfully removed the box \"%2$s\" from the claim \"%1$s\"."
 }

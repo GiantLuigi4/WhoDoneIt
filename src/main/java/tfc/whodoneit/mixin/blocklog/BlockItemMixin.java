@@ -9,10 +9,13 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import tfc.whodoneit.components.WhoDoneItChunkComponents;
+import tfc.whodoneit.components.WhoDoneItWorldComponents;
 import tfc.whodoneit.registry.ChangeReasons;
+import tfc.whodoneit.registry.PreventionCategories;
 
-@Mixin(BlockItem.class)
+@Mixin(value = BlockItem.class, priority = -10000)
 public class BlockItemMixin {
+	
 	@Inject(at = @At("HEAD"), method = "place(Lnet/minecraft/item/ItemPlacementContext;Lnet/minecraft/block/BlockState;)Z")
 	public void WhoDoneIt_prePlacement(ItemPlacementContext context, BlockState state, CallbackInfoReturnable<Boolean> cir) {
 		if (context.getWorld().isClient) return;

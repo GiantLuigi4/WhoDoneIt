@@ -2,6 +2,7 @@ package tfc.whodoneit.antigrief.permissions;
 
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
+import tfc.whodoneit.api.PreventionCategory;
 
 import java.util.HashMap;
 
@@ -43,5 +44,13 @@ public class PermissionList {
 	
 	public void setChangeReason(Identifier reason, byte value) {
 		changeReasonSettings.put(reason, value);
+	}
+	
+	public byte getChangeReason(Identifier reason) {
+		return changeReasonSettings.getOrDefault(reason, (byte) 1);
+	}
+	
+	public byte getProtectionCategory(PreventionCategory category) {
+		return protectionCategorySettings.getOrDefault(category.name, (byte) 1);
 	}
 }
